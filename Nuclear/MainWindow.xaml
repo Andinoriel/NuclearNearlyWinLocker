@@ -9,7 +9,7 @@
         WindowState="Maximized" Topmost="True" Loaded="Window_Loaded" 
         ShowInTaskbar="False" Closing="Window_Closing" Background="Black">
     <MediaElement x:Name="MedEl"
-                  Source="Czigan.avi" 
+                  Source="filename" 
                   Cursor="None" 
                   Volume="100"
                   Stretch="Fill" 

